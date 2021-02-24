@@ -1,6 +1,7 @@
 package basic
 
-import com.bosch.test.IsbnEncoder._
+//import com.bosch.test.IsbnEncoder._
+import com.evobanco.test.test.IsbnEncoder._
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
 import org.junit.{After, Before, Test}
@@ -11,8 +12,8 @@ class IsbnEncoderTest {
   private var spark: SparkSession = null
 
   /**
-    * Create Spark context before tests
-    */
+   * Create Spark context before tests
+   */
   @Before
   def setUp(): Unit = {
     spark = {
@@ -21,8 +22,8 @@ class IsbnEncoderTest {
   }
 
   /**
-    * Stop Spark context after tests
-    */
+   * Stop Spark context after tests
+   */
   @After
   def tearDown(): Unit = {
     spark.stop()

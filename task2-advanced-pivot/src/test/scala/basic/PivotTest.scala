@@ -1,7 +1,9 @@
 package basic
 
-import com.bosch.test.Pivot._
-import com.bosch.test.Pivot
+//import com.bosch.test.Pivot._
+//import com.bosch.test.Pivot
+import com.evobanco.test.Pivot
+import com.evobanco.test.Pivot._
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
 import org.junit.{After, Before, Test}
@@ -12,8 +14,8 @@ class PivotTest {
   private var spark: SparkSession = null
 
   /**
-    * Create Spark context before tests
-    */
+   * Create Spark context before tests
+   */
   @Before
   def setUp(): Unit = {
     spark = {
@@ -22,8 +24,8 @@ class PivotTest {
   }
 
   /**
-    * Stop Spark context after tests
-    */
+   * Stop Spark context after tests
+   */
   @After
   def tearDown(): Unit = {
     spark.stop()
@@ -102,8 +104,8 @@ class PivotTest {
     assert(4 == df_r.filter(size(col("features")) === 1).count())
 
     // ensure that feature values are correct for "Visual test"
-    assert(1 == df_r.filter(col("test") === "Visual test" && col("aggregation") === Pivot.AggFirst && col("features").getItem(0).getItem("value") === 12.2).count())
-    assert(1 == df_r.filter(col("test") === "Visual test" && col("aggregation") === Pivot.AggLast && col("features").getItem(0).getItem("value") === 12.4).count())
+    assert(1 == df_r.filter(col("test") === "Visual test" && col("aggregation") === Pivot.AggFirst && col("features").getItem(0).getItem(1) === 12.2).count())
+    assert(1 == df_r.filter(col("test") === "Visual test" && col("aggregation") === Pivot.AggLast && col("features").getItem(0).getItem(1) === 12.4).count())
   }
 
   @Test
